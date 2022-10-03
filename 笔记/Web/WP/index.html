@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>HNCTF题解 | zcystar</title><meta name="keywords" content="第一次"><meta name="author" content="zcystar"><meta name="copyright" content="zcystar"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HNCTF题解一    用bp抓包，    二  复制下来，在控制台输入  三   电话号码是11位的，但最长就10位，所以我们改一下 输入11位数得到flag 四   用base64解码 五    一句话木马    点击测试链接，成功后点击添加  双击  找到flag[讲道理哪个人出的题，还不能检索，(*・ω・)✄╰ひ╯] 六 直接看源代码 base64编码那就用解码工具解码 七 最难的(可能是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HNCTF题解">
+<meta property="og:url" content="https://zcystar.mc9g.cn/%E7%AC%94%E8%AE%B0/Web/WP/index.html">
+<meta property="og:site_name" content="zcystar">
+<meta property="og:description" content="HNCTF题解一    用bp抓包，    二  复制下来，在控制台输入  三   电话号码是11位的，但最长就10位，所以我们改一下 输入11位数得到flag 四   用base64解码 五    一句话木马    点击测试链接，成功后点击添加  双击  找到flag[讲道理哪个人出的题，还不能检索，(*・ω・)✄╰ひ╯] 六 直接看源代码 base64编码那就用解码工具解码 七 最难的(可能是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg">
+<meta property="article:published_time" content="2022-10-03T07:27:06.390Z">
+<meta property="article:modified_time" content="2022-10-03T07:28:20.762Z">
+<meta property="article:author" content="zcystar">
+<meta property="article:tag" content="第一次">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zcystar.mc9g.cn/%E7%AC%94%E8%AE%B0/Web/WP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HNCTF题解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-03 15:28:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20220916165727507.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">zcystar</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HNCTF题解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-03T07:27:06.390Z" title="发表于 2022-10-03 15:27:06">2022-10-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-03T07:28:20.762Z" title="更新于 2022-10-03 15:28:20">2022-10-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/Web/">Web</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HNCTF题解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="HNCTF题解"><a href="#HNCTF题解" class="headerlink" title="HNCTF题解"></a>HNCTF题解</h1><h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002221853449.png" alt="image-20221002221853449"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002222020145.png" alt="image-20221002222020145"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002223642120.png" alt="image-20221002223642120"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002223921733.png" alt="image-20221002223921733"></p>
+<p>用bp抓包，<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002225230163.png" alt="image-20221002225230163"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002225252216.png" alt="image-20221002225252216"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002225552310.png" alt="image-20221002225552310"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003152502564.png" alt="image-20221003152502564"></p>
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231643834.png" alt="image-20221002231643834"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002225119517.png"></p>
+<p>复制下来，在控制台输入</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231805209.png" alt="image-20221002231805209"></p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231101215.png" alt="image-20221002231101215"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231148272.png" alt="image-20221002231148272"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231247463.png" alt="image-20221002231247463"></p>
+<p>电话号码是11位的，但最长就10位，所以我们改一下<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231421648.png" alt="image-20221002231421648"></p>
+<p>输入11位数得到flag<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002231500856.png" alt="image-20221002231500856"></p>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232440018.png" alt="image-20221002232440018"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232428706.png" alt="image-20221002232428706"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003005554157.png" alt="image-20221003005554157"></p>
+<p>用base64解码</p>
+<h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232440018.png"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232549118.png" alt="image-20221002232549118"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232619553.png" alt="image-20221002232619553"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232651654.png" alt="image-20221002232651654"></p>
+<p>一句话木马</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232919180.png" alt="image-20221002232919180"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002232801646.png" alt="image-20221002232801646"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002233444022.png" alt="image-20221002233444022"></p>
+<p>点击测试链接，成功后点击添加</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002233614544.png" alt="image-20221002233614544"></p>
+<p>双击</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221002233553472.png" alt="image-20221002233553472"></p>
+<p>找到flag[讲道理哪个人出的题，还不能检索，(*・ω・)✄╰ひ╯]</p>
+<h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003000252487.png" alt="image-20221003000252487"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003000315340.png" alt="image-20221003000315340">直接看源代码<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003000730886.png" alt="image-20221003000730886"></p>
+<p>base64编码那就用解码工具解码</p>
+<h2 id="七"><a href="#七" class="headerlink" title="七"></a>七</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003000908000.png" alt="image-20221003000908000"></p>
+<p>最难的(可能是我菜)<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003001006974.png" alt="image-20221003001006974"></p>
+<p>源代码中找到提示，输进去<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003001130731.png" alt="image-20221003001130731"></p>
+<p>（开始坐牢）</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003003709434.png" alt="image-20221003003709434"></p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003003736735.png" alt="image-20221003003736735"></p>
+<p>第一行代码的扩展知识：</p>
+<ul>
+<li><p>error_reporting(255);是列出所有提示</p>
+</li>
+<li><p>error_reporting(0);是不显示所有提示</p>
+</li>
+<li><p>error_reporting(7);只显示严重错误</p>
+</li>
+<li><p>1 E_ERROR 致命的运行时错误</p>
+</li>
+<li><p>2 E_WARNING 运行时警告(非致命性错误)</p>
+</li>
+<li><p>4 E_PARSE 编译时解析错误</p>
+</li>
+<li><p>8 E_NOTICE 运行时提醒(经常是bug，也可能是有意的)</p>
+</li>
+<li><p>16 E_CORE_ERROR PHP启动时初始化过程中的致命错误</p>
+</li>
+<li><p>32 E_CORE_WARNING PHP启动时初始化过程中的警告(非致命性错)</p>
+</li>
+<li><p>64 E_COMPILE_ERROR 编译时致命性错</p>
+</li>
+<li><p>128 E_COMPILE_WARNING 编译时警告(非致命性错)</p>
+</li>
+<li><p>256 E_USER_ERROR 用户自定义的致命错误</p>
+</li>
+<li><p>512 E_USER_WARNING 用户自定义的警告(非致命性错误)</p>
+</li>
+<li><p>1024 E_USER_NOTICE 用户自定义的提醒(经常是bug，也可能是有意的)</p>
+</li>
+<li><p>2048 E_STRICT 编码标准化警告(建议如何修改以向前兼容)</p>
+</li>
+<li><p>4096 E_RECOVERABLE_ERROR 接近致命的运行时错误，若未被捕获则视同E_ERROR</p>
+</li>
+<li><p>6143 E_ALL 除E_STRICT外的所有错误(PHP6中为8191,即包含所有)</p>
+<p>例子	名称	结果<br>$a + $b	联合	$a 和 $b 的联合。<br>$a &#x3D;&#x3D; $b	相等	如果 $a 和 $b 具有相同的键／值对则为 TRUE。<br>$a &#x3D;&#x3D;&#x3D; $b	全等	如果 $a 和 $b 具有相同的键／值对并且顺序和类型都相同则为 TRUE。<br>$a !&#x3D; $b	不等	如果 $a 不等于 $b 则为 TRUE。<br>$a &lt;&gt; $b	不等	如果 $a 不等于 $b 则为 TRUE。<br>$a !&#x3D;&#x3D; $b	不全等	如果 $a 不全等于 $b 则为 TRUE。</p>
+</li>
+</ul>
+<p><img src="https://iknow-pic.cdn.bcebos.com/cc11728b4710b912abe79681d3fdfc03924522ae?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1/quality,q_85/format,f_auto" alt="img">ASCII代码</p>
+<p>因为ban了一些字符所以我们用能用的字符$()+,.0123456789;&#x3D;[]_{}</p>
+<p>通过复杂的设计</p>
+<p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003004123229.png" alt="image-20221003004123229"></p>
+<p>用POST提交rce&#x3D;$<em>2&#x3D;[].[];$</em>&#x3D;$<em>2[3];$</em>++;$<em>1&#x3D;++$</em>;$<em>++;$</em>++;$<em>++;$</em>++;$<em>&#x3D;$<em>1.++$</em>.$<em>2[1];$</em>&#x3D;$</em>(95).$<em>(71).$</em>(69).$<em>(84);$$</em><a href="$$_%5B2%5D">1</a>;用GET提交?hint&#x3D;1&amp;1&#x3D;passthru&amp;2&#x3D;cat%20&#x2F;f*</p>
+<p>就能得到了(好麻烦啊)&lt;(*・ω・)&gt;✄╰ひ╯</p>
+<h2 id="八"><a href="#八" class="headerlink" title="八"></a>八</h2><p><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003005714960.png" alt="image-20221003005714960"></p>
+<p>杂项的题</p>
+<p>附件下载后拖到这里<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003005918486.png" alt="image-20221003005918486"></p>
+<p>得到下面<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/GZO3MMA@RE2%60DE$UZ~MYZYD.png" alt="img"></p>
+<p>用url解码，<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003010339658.png" alt="image-20221003010339658">再用两次base64解码，<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003010413020.png" alt="image-20221003010413020"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003010436950.png" alt="image-20221003010436950">再用二进制解码<img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20221003010507339.png" alt="image-20221003010507339"></p>
+<p>ok了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zcystar.mc9g.cn">zcystar</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zcystar.mc9g.cn/%E7%AC%94%E8%AE%B0/Web/WP/">https://zcystar.mc9g.cn/%E7%AC%94%E8%AE%B0/Web/WP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zcystar.mc9g.cn" target="_blank">zcystar</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/">第一次</a></div><div class="post_share"><div class="social-share" data-image="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E9%9B%B6%E7%A2%8E/Web/web/"><img class="next-cover" src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Web</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/image-20220916165727507.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zcystar</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HNCTF%E9%A2%98%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">HNCTF题解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80"><span class="toc-number">1.1.</span> <span class="toc-text">一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C"><span class="toc-number">1.2.</span> <span class="toc-text">二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89"><span class="toc-number">1.3.</span> <span class="toc-text">三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B"><span class="toc-number">1.4.</span> <span class="toc-text">四</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94"><span class="toc-number">1.5.</span> <span class="toc-text">五</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD"><span class="toc-number">1.6.</span> <span class="toc-text">六</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83"><span class="toc-number">1.7.</span> <span class="toc-text">七</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB"><span class="toc-number">1.8.</span> <span class="toc-text">八</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%AC%94%E8%AE%B0/Web/WP/" title="HNCTF题解"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HNCTF题解"/></a><div class="content"><a class="title" href="/%E7%AC%94%E8%AE%B0/Web/WP/" title="HNCTF题解">HNCTF题解</a><time datetime="2022-10-03T07:27:06.390Z" title="发表于 2022-10-03 15:27:06">2022-10-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E9%9B%B6%E7%A2%8E/Web/web/" title="Web"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web"/></a><div class="content"><a class="title" href="/%E9%9B%B6%E7%A2%8E/Web/web/" title="Web">Web</a><time datetime="2022-09-07T09:05:43.742Z" title="发表于 2022-09-07 17:05:43">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%B8%80%E7%BA%A7%E5%88%86%E7%B1%BB/%E4%BA%8C%E7%BA%A7%E5%88%86%E7%B1%BB%E5%8F%AF%E5%8A%A0%E5%8F%AF%E4%B8%8D%E5%8A%A0/Untitled/" title="第一篇文章"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一篇文章"/></a><div class="content"><a class="title" href="/%E4%B8%80%E7%BA%A7%E5%88%86%E7%B1%BB/%E4%BA%8C%E7%BA%A7%E5%88%86%E7%B1%BB%E5%8F%AF%E5%8A%A0%E5%8F%AF%E4%B8%8D%E5%8A%A0/Untitled/" title="第一篇文章">第一篇文章</a><time datetime="2022-09-05T12:37:58.288Z" title="发表于 2022-09-05 20:37:58">2022-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80/c%E8%AF%AD%E8%A8%80/" title="C语言笔记"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/OIP-C.XdJTda4pBwUuQ-QxCDnxkgHaE2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言笔记"/></a><div class="content"><a class="title" href="/%E7%AC%94%E8%AE%B0/C%E8%AF%AD%E8%A8%80/c%E8%AF%AD%E8%A8%80/" title="C语言笔记">C语言笔记</a><time datetime="2022-09-05T12:33:48.093Z" title="发表于 2022-09-05 20:33:48">2022-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/uncategorized/hello-world/" title="Hello World"><img src="https://zcystar-1313738303.cos.ap-beijing.myqcloud.com/dlzhximbfp2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/uncategorized/hello-world/" title="Hello World">Hello World</a><time datetime="2022-09-05T10:06:17.614Z" title="发表于 2022-09-05 18:06:17">2022-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By zcystar</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '7oTEZ1XXC0Cy7sBULDXTjE4f-gzGzoHsz',
+      appKey: 'sw9WSbQcYWQVZaIoTaznvHvh',
+      avatar: 'monsterid',
+      serverURLs: 'https://7otez1xx.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
